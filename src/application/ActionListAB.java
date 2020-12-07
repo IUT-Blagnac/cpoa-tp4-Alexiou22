@@ -33,23 +33,12 @@ public class ActionListAB implements ActionList {
 	/**
 	 * 
 	 */
-	public ActionListAB(AgenceBancaire ag, String codeMenu) {
+	public ActionListAB(AgenceBancaire ag, String code, String mess, String titre) {
 
 		this.listeActions = new ArrayList<Action>();
-
-		if (codeMenu == "3") {
-			this.message = "3 - Menu opérations sur comptes";
-			this.code = "3";
-			this.title ="Menu de " + ag.getNomAgence() + " (" + ag.getLocAgence() + ")";
-			this.listeActions.add(new ActionDeposerCompte());
-			this.listeActions.add(new ActionRetirerCompte());
-		}else {
-			this.message = "4 - Menu gestion des comptes";
-			this.code = "4";
-			this.title ="Menu de " + ag.getNomAgence() + " (" + ag.getLocAgence() + ")";
-			this.listeActions.add(new ActionAjoutCompte());
-			this.listeActions.add(new ActionSupCompte());
-		}
+		this.message = mess;
+		this.code = code;
+		this.title = titre;
 
 	}
 
@@ -156,7 +145,9 @@ public class ActionListAB implements ActionList {
 	 */
 	@Override
 	public boolean addAction(Action ac) {
-		return this.addAction(ac);
+		
+		listeActions.add(ac);
+		return true;
 	}
 
 	/**

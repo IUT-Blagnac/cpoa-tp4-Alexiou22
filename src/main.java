@@ -6,7 +6,11 @@ import java.util.Scanner;
 import action.Action;
 import application.AccesAgenceBancaire;
 import application.ActionListAB;
+import application.action.ActionAjoutCompte;
+import application.action.ActionDeposerCompte;
 import application.action.ActionListeDesComptes;
+import application.action.ActionRetirerCompte;
+import application.action.ActionSupCompte;
 import application.action.ActionVoirCompteNumero;
 import banque.AgenceBancaire;
 
@@ -32,6 +36,12 @@ public class main {
 		boolean erreur;
 		int i;
 		int j;
+		//menu trois 
+		ActionListAB listemenu3 ;
+		String titre3 ;
+		//menu quatre 
+		ActionListAB listemenu4 ;
+		String titre4 ;
 		
 
 		//initialisation
@@ -39,8 +49,18 @@ public class main {
 		monAg = AccesAgenceBancaire.getAgenceBancaire();
 		listeActions.add(new ActionListeDesComptes());
 		listeActions.add(new ActionVoirCompteNumero());
-		listeActions.add(new ActionListAB(monAg,"3"));
-		listeActions.add(new ActionListAB(monAg,"4"));
+		//menu3
+		titre3 = "Menu de " + monAg.getNomAgence() + " (" + monAg.getLocAgence() + ")";
+		listemenu3 = new ActionListAB(monAg, "3", "3 - Menu opérations sur comptes", titre3);
+		listemenu3.addAction(new ActionDeposerCompte());
+		listemenu3.addAction(new ActionRetirerCompte());
+		listeActions.add(listemenu3);
+		//menu4
+		titre4 = "Menu de " + monAg.getNomAgence() + " (" + monAg.getLocAgence() + ")";
+		listemenu4 = new ActionListAB(monAg, "4", "4 - Menu gestion des comptes", titre4);
+		listemenu4.addAction(new ActionAjoutCompte());
+		listemenu4.addAction(new ActionSupCompte());
+		listeActions.add(listemenu4);
 		lect = new Scanner ( System.in );
 
 		//savoir si on quite le programe ou pas
