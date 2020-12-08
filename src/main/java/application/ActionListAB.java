@@ -10,10 +10,6 @@ import java.util.Scanner;
 
 import action.Action;
 import action.ActionList;
-import application.action.ActionAjoutCompte;
-import application.action.ActionDeposerCompte;
-import application.action.ActionRetirerCompte;
-import application.action.ActionSupCompte;
 import banque.AgenceBancaire;
 
 /**
@@ -45,7 +41,6 @@ public class ActionListAB implements ActionList {
 	/**
 	 * 
 	 */
-	@Override
 	public String actionMessage() {
 		return this.message;
 	}
@@ -53,7 +48,6 @@ public class ActionListAB implements ActionList {
 	/**
 	 * 
 	 */
-	@Override
 	public String actionCode() {
 		return this.code;
 	}
@@ -77,7 +71,7 @@ public class ActionListAB implements ActionList {
 
 		//while tant que pas q
 		while (continu == true) {
-			
+
 			//erreur
 			erreur = true;
 
@@ -93,13 +87,13 @@ public class ActionListAB implements ActionList {
 			}
 
 			System.out.println("\n 0 - Pourquitter ce menu");
-			
+
 			//le choix
 			System.out.println("\n Votre choix");
 			lect = new Scanner ( System.in );
 			lect.useLocale(Locale.US);
 			valeur = lect.next();
-			
+
 			//quel choix choisi
 			if (valeur.equals("0")) {
 				System.out.println("ByeBye");
@@ -127,7 +121,7 @@ public class ActionListAB implements ActionList {
 	/**
 	 * 
 	 */
-	@Override
+
 	public String listTitle() {
 		return this.title;
 	}
@@ -135,7 +129,7 @@ public class ActionListAB implements ActionList {
 	/**
 	 * 
 	 */
-	@Override
+
 	public int size() {
 		return this.listeActions.size();
 	}
@@ -143,9 +137,9 @@ public class ActionListAB implements ActionList {
 	/**
 	 * 
 	 */
-	@Override
+
 	public boolean addAction(Action ac) {
-		
+
 		listeActions.add(ac);
 		return true;
 	}
@@ -161,5 +155,7 @@ public class ActionListAB implements ActionList {
 		System.out.print("Tapper un car + return pour continuer ... ");
 		lect.next(); // Inutile à stocker mais ... 
 	}
+
+
 
 }
